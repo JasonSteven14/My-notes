@@ -1,7 +1,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col [formGroup]="NoteGroup">
         <ion-header>
           <ion-toolbar color="primary">
             <ion-title>
@@ -9,21 +9,23 @@
             </ion-title>
           </ion-toolbar>
         </ion-header>
-        <ion-item>
+        <ion-item class="form-group">
           <ion-label position="floating">Title</ion-label>
-          <ion-input id="titleInptNote"></ion-input>
+          <ion-input formControlName="title" id="titleInptNote"></ion-input>
+          <div style=" padding: 5px;color: #e3463e;" *ngIf="formErrors.title">{{validationMessages.title.required}}</div>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Description</ion-label>
-          <ion-textarea id="descriptionNote" rows="9"></ion-textarea>
+          <ion-textarea formControlName="description" id="descriptionNote" rows="9"></ion-textarea>
+          <div style=" padding: 5px;color: #e3463e;" *ngIf="formErrors.description">{{validationMessages.description.required}}</div>
         </ion-item>
         <ion-toolbar>
           <ion-buttons class="ion-text-capitalize" slot="secondary">
-            <ion-button fill="solid" color="primary">Done!!
+            <ion-button [disabled]="NoteGroup.invalid" fill="solid" color="primary">Done!!
               <ion-icon slot="start" name="add"></ion-icon>
             </ion-button>
-            <ion-button fill="solid" color="danger">Cancel
-              <ion-icon slot="start" name="close"></ion-icon>
+            <ion-button (click)="dissmisModal()" fill="solid" color="danger">Cancel
+              <ion-icon  slot="start" name="close"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
