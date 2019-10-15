@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage'
 import { NOTE } from '../shared/data'
 import { Observable } from 'rxjs'
-import { isNgTemplate } from '@angular/compiler';
-import { NgFormSelectorWarning } from '@angular/forms';
-
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +9,24 @@ import { NgFormSelectorWarning } from '@angular/forms';
 
 export class NoteService {
 
+  note = NOTE;
+  id: any;
 
-  constructor(private storage: Storage) { }
+  constructor(private storageService: StorageService)
+   { }
+
+   getId() {
+     return this.note.find(x => x.id = this.id)
+   }
 
   createExampleNote() {
-    console.log('creating notedata')
-    this.storage.set('jason', 'steven')
+
+    console.log('Creating notedata')
+
+    let noteExample = this.storageService.get(this.id).then(()=>{
+      val => val
+    });
+    return noteExample;
   }
 
   addNote() {
