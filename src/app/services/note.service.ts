@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NOTE } from '../shared/data'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -9,31 +9,19 @@ import { StorageService } from './storage.service';
 
 export class NoteService {
 
-  note = NOTE;
-  id: any;
-
+ 
   constructor(private storageService: StorageService)
    { }
-
-   getId() {
-     return this.note.find(x => x.id = this.id)
-   }
-
-  createExampleNote() {
-
-    console.log('Creating notedata')
-
-    let noteExample = this.storageService.get(this.id).then(()=>{
-      val => val
-    });
-    return noteExample;
-  }
 
   addNote() {
   }
 
-  getNote() {
+  getNote(id) {
 
+  }
+
+  getNotes() {
+    return of(NOTE);
   }
 
   updateNote() {
