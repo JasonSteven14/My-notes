@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular'
-import { ModalComponent } from '../modal/modal.component'
-import { NoteService } from '../services/note.service'
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
+import { NoteService } from '../services/note.service';
 import { Note } from '../shared/note';
 
 @Component({
@@ -19,12 +19,11 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.serviceNote.getNotes().subscribe((notes: Note[])=>{
+    this.serviceNote.getNotes().subscribe((notes: Note[]) => {
       this.notesList = notes;
-      console.log(this.notesList);
     });
   }
-  
+
   async openModal() {
     const modal = await this.modal.create({
       component: ModalComponent
