@@ -11,17 +11,17 @@
         </ion-header>
         <ion-item class="form-group">
           <ion-label position="floating">Title</ion-label>
-          <ion-input formControlName="title" id="titleInptNote"></ion-input>
+          <ion-input formControlName="title" id="titleInptNote"> </ion-input>
           <div style=" padding: 5px;color: #e3463e;" *ngIf="formErrors.title">{{validationMessages.title.required}}</div>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Description</ion-label>
-          <ion-textarea formControlName="description" id="descriptionNote" rows="9"></ion-textarea>
+          <ion-textarea formControlName="description" id="descriptionNote"rows="9"></ion-textarea>
           <div style=" padding: 5px;color: #e3463e;" *ngIf="formErrors.description">{{validationMessages.description.required}}</div>
         </ion-item>
         <ion-toolbar>
           <ion-buttons class="ion-text-capitalize" slot="secondary">
-            <ion-button [disabled]="NoteGroup.invalid" fill="solid" color="primary">Done!!
+            <ion-button (click)="createNote()" [disabled]="NoteGroup.invalid" fill="solid" color="primary">Done!!
               <ion-icon slot="start" name="add"></ion-icon>
             </ion-button>
             <ion-button (click)="dissmisModal()" fill="solid" color="danger">Cancel

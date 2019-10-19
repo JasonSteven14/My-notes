@@ -12,6 +12,9 @@ export class ModalComponent implements OnInit {
 
   NoteGroup: FormGroup;
 
+  title: string;
+  description: string;
+
   formErrors = {
     title: '',
     description: ''
@@ -62,11 +65,14 @@ export class ModalComponent implements OnInit {
     }
   }
   dissmisModal() {
-    console.log('button press')
+    console.log('button press');
     this.mddissmis.dismiss();
   }
 
+
   createNote() {
-    this.serviceNote.addNote()
+    // TODO: add addNotes function to notesService
+    // this.serviceNote.addNote();
+    this.mddissmis.dismiss();
   }
 }
