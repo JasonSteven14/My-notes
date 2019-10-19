@@ -1,6 +1,6 @@
 import { Note } from './note';
 
-export const NOTE: Note[] = [
+export const NOTES: Note[] = [
     {
         id: '0',
         title: 'My first Note',

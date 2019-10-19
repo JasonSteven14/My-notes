@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NOTE } from '../shared/data'
-import { Observable, of } from 'rxjs'
-import { StorageService } from './storage.service';
+import { NOTES } from '../shared/data';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,27 +8,14 @@ import { StorageService } from './storage.service';
 
 export class NoteService {
 
- 
-  constructor(private storageService: StorageService)
-   { }
-
-  addNote() {
-  }
-
-  getNote(id) {
-
-  }
+  constructor() { }
 
   getNotes() {
-    return of(NOTE);
+    return of(NOTES);
   }
 
-  updateNote() {
-
-  }
-
-  deleteNote(id: number) {
-
+  getNote(id: string) {
+    return of(NOTES.find(note => id === note.id));
   }
 
 }
