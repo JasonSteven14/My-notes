@@ -1,59 +1,42 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       My notes
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <!-- <ion-grid>
+  <ion-grid>
     <ion-row>
-      <ion-col size-md="6" offset-md="3">
-        <ion-card>
-          <ion-card-header color="primary" style="
-          display: flex;
-          flex-direction: column;
-          width: 100% !important;
-          margin: 0 !important;
+      <ion-col style="
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
         ">
+        <ion-card style="
+        width: 200px;
+        height: 150px;
+        margin-top: 10px;"
+         (click)="onOpenNoteDetail(note)"
+          *ngFor="let note of notesList">
+          <ion-card-header color="primary">
             <ion-card-title>
-              Note
+              {{ note.title }}
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-item>
-              <ion-label position="floating">Name</ion-label>
-              <ion-input></ion-input>
+              <ion-label>{{note.title}}</ion-label>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Description</ion-label>
-              <ion-textarea rows="9"></ion-textarea>
-            </ion-item>
-            <ion-item>
-              <ion-toolbar>
-                <ion-buttons class="ion-text-capitalize" slot="secondary">
-                  <ion-button fill="solid" color="primary">Done!!
-                    <ion-icon slot="start" name="add"></ion-icon>
-                  </ion-button>
-                  <ion-button fill="solid" color="danger">Cancel
-                    <ion-icon slot="start" name="close"></ion-icon>
-                  </ion-button>
-                </ion-buttons>
-              </ion-toolbar>
+              <ion-label>{{note.text}}</ion-label>   
             </ion-item>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid> -->
-  <ion-list>
-    <ion-item *ngFor="let note of notesList">
-      <ion-label>{{ note.title }}</ion-label>
-      <ion-button (click)="onOpenNoteDetail(note)">open</ion-button>
-    </ion-item>
-  </ion-list>
-
+  </ion-grid>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openModal()">
       <ion-icon name="add"></ion-icon>
