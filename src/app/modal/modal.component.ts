@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { ModalController } from '@ionic/angular'
-import { NoteService } from '../services/note.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-modal',
@@ -21,11 +21,11 @@ export class ModalComponent implements OnInit {
   };
 
   validationMessages = {
-    'title': {
-      'required': "Give your note a name "
+    title: {
+      required: 'Give your note a name'
     },
-    'description': {
-      'required': 'What you want remember'
+    description: {
+      required: 'What you want remember'
     }
   };
 
@@ -43,14 +43,16 @@ export class ModalComponent implements OnInit {
     this.NoteGroup = this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]]
-    })
+    });
     this.NoteGroup.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
   }
 
   onValueChanged(data?: any) {
-    if (!this.NoteGroup) { return }
+    if (!this.NoteGroup) { return; }
     const form = this.NoteGroup;
+
+    // tslint:disable-next-line: forin
     for (const field in this.formErrors) {
       this.formErrors[field] = '';
 
@@ -58,6 +60,8 @@ export class ModalComponent implements OnInit {
 
       if (control && control.dirty && !control.valid) {
         const message = this.validationMessages[field];
+
+        // tslint:disable-next-line: forin
         for (const key in control.errors) {
           this.formErrors[field] += message[key] + '';
         }
