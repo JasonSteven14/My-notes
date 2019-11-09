@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, AlertController } from '@ionic/angular';
-import { ModalComponent } from '../modal/modal.component';
+import { AddNoteComponent } from '../add-note/add-note.component';
 import { NoteService } from '../services/note.service';
 import { Note } from '../shared/note';
 import { Router } from '@angular/router';
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
 
   async openModal() {
     const modal = await this.modal.create({
-      component: ModalComponent
+      component: AddNoteComponent
     });
     return await modal.present();
   }

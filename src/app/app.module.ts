@@ -15,11 +15,11 @@ import { baseURL } from './shared/urldbs';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ModalComponent } from './modal/modal.component';
+import { AddNoteComponent } from './add-note/add-note.component';
 
 @NgModule({
-  declarations: [AppComponent, ModalComponent],
-  entryComponents: [ModalComponent],
+  declarations: [AppComponent, AddNoteComponent],
+  entryComponents: [AddNoteComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

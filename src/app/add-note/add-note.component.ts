@@ -4,11 +4,11 @@ import { ModalController } from '@ionic/angular';
 import { NoteService } from '../services/note.service';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
+  selector: 'app-add-note',
+  templateUrl: './add-note.component.html',
+  styleUrls: ['./add-note.component.scss'],
 })
-export class ModalComponent implements OnInit {
+export class AddNoteComponent implements OnInit {
 
   NoteGroup: FormGroup;
 
