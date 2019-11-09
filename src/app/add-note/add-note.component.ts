@@ -10,7 +10,7 @@ import { NoteService } from '../services/note.service';
 })
 export class AddNoteComponent implements OnInit {
 
-  NoteGroup: FormGroup;
+  noteForm: FormGroup;
 
   title: string;
   description: string;
@@ -42,17 +42,17 @@ export class AddNoteComponent implements OnInit {
    }
 
   createForm() {
-    this.NoteGroup = this.fb.group({
+    this.noteForm = this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]]
     });
-    this.NoteGroup.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.noteForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
   }
 
   onValueChanged(data?: any) {
-    if (!this.NoteGroup) { return; }
-    const form = this.NoteGroup;
+    if (!this.noteForm) { return; }
+    const form = this.noteForm;
 
     // tslint:disable-next-line: forin
     for (const field in this.formErrors) {
@@ -78,7 +78,11 @@ export class AddNoteComponent implements OnInit {
   createNote() {
     // TODO: add addNotes function to notesService
     // this.serviceNote.addNote();
-    this.serviceNote.addNote(this.NoteGroup);
+    // this.serviceNote.addNote(this.noteForm);
     this.mddissmis.dismiss();
   }
 }
+ /*
+ 1.
+ 
+ */

@@ -3,6 +3,7 @@ import { NOTES } from '../shared/data';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { delay } from 'rxjs/operators';
+import { Note } from '../shared/note';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,8 @@ export class NoteService {
     })).pipe(delay(1000));
   }
 
-  addNote(noteCopy) {
+  addNote(note: Note) {
     const newdate = new Date();
-    return of([noteCopy, newdate]);
   }
 
 }

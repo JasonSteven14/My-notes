@@ -8,7 +8,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col [formGroup]="NoteGroup">
+      <ion-col [formGroup]="noteForm">
         <ion-item class="form-group">
           <ion-label position="floating">Title</ion-label>
           <ion-input formControlName="title" id="titleInptNote"> </ion-input>
@@ -26,7 +26,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons class="ion-text-capitalize" slot="secondary">
-      <ion-button (click)="createNote()" [disabled]="NoteGroup.invalid" fill="solid" color="primary">Add
+      <ion-button (click)="createNote()" [disabled]="noteForm.invalid" fill="solid" color="primary">Add
         <ion-icon slot="start" name="add"></ion-icon>
       </ion-button>
       <ion-button (click)="dissmisModal()" fill="solid" color="danger">Cancel
