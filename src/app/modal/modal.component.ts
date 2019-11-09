@@ -71,7 +71,6 @@ export class ModalComponent implements OnInit {
     }
   }
   dissmisModal() {
-    console.log('button press');
     this.mddissmis.dismiss();
   }
 
@@ -79,6 +78,7 @@ export class ModalComponent implements OnInit {
   createNote() {
     // TODO: add addNotes function to notesService
     // this.serviceNote.addNote();
+    this.serviceNote.addNote(this.NoteGroup);
     this.mddissmis.dismiss();
   }
 }

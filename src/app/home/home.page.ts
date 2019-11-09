@@ -22,13 +22,30 @@ export class HomePage implements OnInit {
     private router: Router,
     private loadingController: LoadingController,
     private strgservices: StorageService
-  ) { }
+  ) {
+    // this.serviceNote.addNote().subscribe(() => {
+
+    // });
+  }
 
   ngOnInit() {
     this.strgservices.firebaseCreateNote();
     this.serviceNote.getNotes().subscribe((notes: Note[]) => {
       this.notesList = notes;
     });
+    this.openFunction();
+  }
+
+  openFunction() {
+    console.log('registering an async function');
+    setTimeout(() => {
+      console.log('Execution async function');
+    }, 2000);
+    console.log('Instructions after registering an async function');
+    const MAX_ITERATION = 2000000000;
+    for (let i = 0; i < MAX_ITERATION; i++) {
+      console.log((i / MAX_ITERATION) * 100 + ' %');
+    }
   }
 
 
