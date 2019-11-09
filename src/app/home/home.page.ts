@@ -3,7 +3,8 @@ import { ModalController, LoadingController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
 import { NoteService } from '../services/note.service';
 import { Note } from '../shared/note';
-import { Router, RouterEvent } from '@angular/router';
+import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
 
 
 @Component({
@@ -19,10 +20,12 @@ export class HomePage implements OnInit {
     private modal: ModalController,
     private serviceNote: NoteService,
     private router: Router,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private strgservices: StorageService
   ) { }
 
   ngOnInit() {
+    this.strgservices.firebaseCreateNote();
     this.serviceNote.getNotes().subscribe((notes: Note[]) => {
       this.notesList = notes;
     });
@@ -47,7 +50,8 @@ export class HomePage implements OnInit {
           queryParams: {
             note: JSON.stringify(note)
           }
-        });
+        }
+        );
       }
     );
   }

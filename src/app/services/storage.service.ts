@@ -1,20 +1,31 @@
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Injectable, OnInit } from '@angular/core';
+import { Firebase } from '@ionic-native/firebase/ngx';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService {
+export class StorageService implements OnInit {
+
+
+  db = firebase.database();
 
   constructor(
-    private storage: Storage
+    private firebasenative: Firebase
   ) { }
 
-  set(key: string, value: any) {
-    return this.storage.set(key, value);
+  ngOnInit() {
+
+    console.log(this.db);
+
+    this.firebasenative.getToken().then(
+      token => console.log(`The token is ${token}`)
+      ).catch(
+        error => console.log(`User opened a notification`, error)
+      );
   }
 
-  get(key: string) {
-    return this.storage.get(key);
+  firebaseCreateNote() {
+    console.log(this.db);
   }
 }

@@ -37,7 +37,9 @@ export class ModalComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+   }
 
   createForm() {
     this.NoteGroup = this.fb.group({
