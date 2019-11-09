@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController } from '@ionic/angular';
+import { ModalController, LoadingController, AlertController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
 import { NoteService } from '../services/note.service';
 import { Note } from '../shared/note';
 import { Router } from '@angular/router';
-import { StorageService } from '../services/storage.service';
-
 
 @Component({
   selector: 'app-home',
@@ -18,36 +16,17 @@ export class HomePage implements OnInit {
 
   constructor(
     private modal: ModalController,
-    private serviceNote: NoteService,
+    private noteService: NoteService,
     private router: Router,
     private loadingController: LoadingController,
-    private strgservices: StorageService
-  ) {
-    // this.serviceNote.addNote().subscribe(() => {
-
-    // });
-  }
+    private alertController: AlertController
+  ) { }
 
   ngOnInit() {
-    this.strgservices.firebaseCreateNote();
-    this.serviceNote.getNotes().subscribe((notes: Note[]) => {
+    this.noteService.getNotes().subscribe((notes: Note[]) => {
       this.notesList = notes;
     });
-    this.openFunction();
   }
-
-  openFunction() {
-    console.log('registering an async function');
-    setTimeout(() => {
-      console.log('Execution async function');
-    }, 2000);
-    console.log('Instructions after registering an async function');
-    const MAX_ITERATION = 2000000000;
-    for (let i = 0; i < MAX_ITERATION; i++) {
-      console.log((i / MAX_ITERATION) * 100 + ' %');
-    }
-  }
-
 
   async openModal() {
     const modal = await this.modal.create({
@@ -56,21 +35,31 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  async onOpenNoteDetail(note) {
+  // 1.Se pulsa sobre una nota
+  async onOpenNoteDetail(note: Note) {
     const loading = await this.loadingController.create({
-      message: 'Loading Note',
-      duration: 3000
+      message: 'Loading Note'
     });
-    await loading.present().then(
-      () => {
-        this.router.navigate(['/note-detail'], {
-          queryParams: {
-            note: JSON.stringify(note)
-          }
+    await loading.present();
+
+    // 3. Se llama al servicio de getNote()
+    this.noteService.getNote(note.id).subscribe((noteDetail: Note) => {
+      loading.dismiss();
+      // 4. Si la respuesta ha ido bien se quita el Loading y se abre la página del detalle
+      this.router.navigate(['/note-detail'], {
+        queryParams: {
+          note: JSON.stringify(noteDetail)
         }
-        );
-      }
-    );
+      });
+    }, async (err) => {
+      loading.dismiss();
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'An error has happened, please try later.',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
   }
 
   /*1.Se pulsa sobre una nota
