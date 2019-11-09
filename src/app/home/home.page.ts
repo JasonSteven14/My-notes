@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
 
   // 1.Se pulsa sobre una nota
   async onOpenNoteDetail(note: Note) {
+    // 2. Se muestra un spinner de Loading(LoadingController)
     const loading = await this.loadingController.create({
       message: 'Loading Note'
     });
