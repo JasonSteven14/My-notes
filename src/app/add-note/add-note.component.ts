@@ -77,12 +77,12 @@ export class AddNoteComponent implements OnInit {
 
   createNote() {
     // TODO: add addNotes function to notesService
-    // this.serviceNote.addNote();
-    // this.serviceNote.addNote(this.noteForm);
+
     this.mddissmis.dismiss();
   }
 }
  /*
- 1.
- 
+  1. se toman los datos de el formulario como nota
+  2. se llama al servicio de notas para añadirla a la base de datos
+  3. se actualiza la nota en home component para viualizar la nota
  */

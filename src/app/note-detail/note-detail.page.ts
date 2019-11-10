@@ -25,4 +25,12 @@ export class NoteDetailPage implements OnInit {
     });
   }
 
+  /*
+  1. añadir un boton en la parte superior derecha
+    1. 2. el boton abre un modal que permite modificar la nota o borrarla
+  2. añadir la fecha de creacion de la nota
+   2.1 añadir ultima fecha de modificacion
+  3.
+  */
+
 }
