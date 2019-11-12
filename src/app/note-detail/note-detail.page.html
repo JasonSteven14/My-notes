@@ -5,6 +5,11 @@
       </ion-back-button>
     </ion-buttons>
     <ion-title>{{ note?.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openSettingModal()">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

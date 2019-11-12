@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Note } from '../shared/note';
+import { ModalController } from '@ionic/angular';
+import { NoteDetailSettingsComponent } from '../note-detail-settings/note-detail-settings.component';
 
 @Component({
   selector: 'app-note-detail',
@@ -12,7 +14,8 @@ export class NoteDetailPage implements OnInit {
   note: Note;
 
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private modalController: ModalController
   ) {
 
    }
@@ -23,6 +26,13 @@ export class NoteDetailPage implements OnInit {
         this.note = JSON.parse(params.note);
       }
     });
+  }
+
+  async openSettingModal() {
+    const modal = await this.modalController.create({
+      component: NoteDetailSettingsComponent
+    });
+    modal.present();
   }
 
   /*
