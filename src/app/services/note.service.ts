@@ -19,13 +19,11 @@ export class NoteService {
   }
 
   getNote(id: string) {
-    return of(NOTES.find(note => {
-      return note.id === id;
-    })).pipe(delay(1000));
+    return of(NOTES.find(note => note.id === id)).pipe(delay(1000));
   }
 
   addNote(note: Note) {
-    const newdate = new Date();
+    NOTES.push(note);
   }
 
 }
