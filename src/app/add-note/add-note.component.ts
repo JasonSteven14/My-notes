@@ -13,18 +13,18 @@ export class AddNoteComponent implements OnInit {
   noteForm: FormGroup;
 
   title: string;
-  description: string;
+  text: string;
 
   formErrors = {
     title: '',
-    description: ''
+    text: ''
   };
 
   validationMessages = {
     title: {
       required: 'Give your note a name'
     },
-    description: {
+    text: {
       required: 'What you want remember'
     }
   };
@@ -44,7 +44,7 @@ export class AddNoteComponent implements OnInit {
   createForm() {
     this.noteForm = this.fb.group({
       title: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      text: ['', [Validators.required]]
     });
     this.noteForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
@@ -77,7 +77,9 @@ export class AddNoteComponent implements OnInit {
 
   createNote() {
     // TODO: add addNotes function to notesService
-
+    const notedata = this.noteForm.value;
+    notedata.date = new Date(Date.now());
+    this.serviceNote.addNote(notedata);
     this.mddissmis.dismiss();
   }
 }

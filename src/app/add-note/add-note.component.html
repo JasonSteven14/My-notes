@@ -15,9 +15,9 @@
           <div style=" padding: 5px;color: #e3463e;" *ngIf="formErrors.title">{{validationMessages.title.required}}</div>
         </ion-item>
         <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea formControlName="description" id="descriptionNote" rows="9"></ion-textarea>
-          <div style=" padding: 5px; color: #e3463e;" *ngIf="formErrors.description">{{validationMessages.description.required}}</div>
+          <ion-label position="floating">text</ion-label>
+          <ion-textarea formControlName="text" id="textNote" rows="9"></ion-textarea>
+          <div style=" padding: 5px; color: #e3463e;" *ngIf="formErrors.text">{{validationMessages.text.required}}</div>
         </ion-item>
       </ion-col>
     </ion-row>
