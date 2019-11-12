@@ -15,7 +15,7 @@ export class NoteDetailSettingsComponent implements OnInit {
   ngOnInit() {}
 
 
-  dissmisModalSetting() {
+  closeModal() {
     this.modalController.dismiss();
   }
 }
