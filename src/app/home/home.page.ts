@@ -62,15 +62,14 @@ export class HomePage implements OnInit {
       alert.present();
     });
   }
+  // List TODO
 
-  /*1.Se pulsa sobre una nota
+  /* 1. create user login page
 
-  2. Se muestra un spinner de Loading(LoadingController)
+     2. Create logic to choose between page login or user
 
-  3. Se llama al servicio de getNote()
+     3. when login show the content of each user
 
-  4. Si la respuesta ha ido bien se quita el Loading y se abre la página del detalle
-
-  5. Sí ha habido un error en la llamada al servicio se quita el Loading y se muestra una alerta de error*/
+  */
 
 }
