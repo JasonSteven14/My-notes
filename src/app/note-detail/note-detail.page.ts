@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Note } from '../shared/note';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { NoteDetailSettingsComponent } from '../note-detail-settings/note-detail-settings.component';
 
 @Component({
@@ -15,7 +15,7 @@ export class NoteDetailPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private modalController: ModalController
+    private popoverController: PopoverController
   ) {
 
    }
@@ -28,9 +28,11 @@ export class NoteDetailPage implements OnInit {
     });
   }
 
-  async openSettingModal() {
-    const modal = await this.modalController.create({
-      component: NoteDetailSettingsComponent
+  async openSettingPopover(ev: any) {
+    const modal = await this.popoverController.create({
+      component: NoteDetailSettingsComponent,
+      event: ev,
+      translucent: true
     });
     modal.present();
   }

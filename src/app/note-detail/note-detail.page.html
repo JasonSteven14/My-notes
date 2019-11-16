@@ -6,7 +6,7 @@
     </ion-buttons>
     <ion-title>{{ note?.title }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="openSettingModal()">
+      <ion-button (click)="openSettingPopover($event)">
         <ion-icon name="settings"></ion-icon>
       </ion-button>
     </ion-buttons>
