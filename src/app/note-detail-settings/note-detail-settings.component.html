@@ -1,19 +1,31 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-button (click)="closeModal()">
-        <ion-icon name="arrow-round-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Settings</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-grid>
-    <ion-row>
+<ion-list>
+  <ion-list-header>Settings</ion-list-header>
+  <ion-item>
+    <div scrollY="true" style="display: flex; flex-wrap: no-wrap; overflow: auto;">
       <ion-col>
-        this is a column
+        <ion-checkbox checked color="primary"></ion-checkbox>
       </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+      <ion-col>
+        <ion-checkbox checked color="secondary"></ion-checkbox>
+      </ion-col>
+      <ion-col>
+        <ion-checkbox checked color="primary"></ion-checkbox>
+      </ion-col>
+      <ion-col>
+        <ion-checkbox checked color="secondary"></ion-checkbox>
+      </ion-col>
+      <ion-col>
+        <ion-checkbox checked color="secondary"></ion-checkbox>
+      </ion-col>
+    </div>
+  </ion-item>
+  <ion-item>
+    item 1
+  </ion-item>
+  <ion-item>
+    item 2
+  </ion-item>
+  <ion-item>
+    item 3
+  </ion-item>
+</ion-list>
