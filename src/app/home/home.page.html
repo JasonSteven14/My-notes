@@ -4,7 +4,7 @@
       My notes
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLinkActive="active" [routerLink]="['/user']">
+      <ion-button routerLinkActive="active" [routerLink]="['/login']">
         <ion-icon name="contact"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -21,13 +21,14 @@
         ">
         <ion-card style="
         width: 400px;
+        border-radius: 14px;
         margin: 5px;" (click)="onOpenNoteDetail(note)" *ngFor="let note of notesList">
           <ion-card-header color="primary">
             <ion-card-title>
               {{ note.title }}
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content style="padding: 0;">
+          <ion-card-content style="padding: 0;--ion-background-color:{{ note.color }}!important;">
             <ion-item lines="none" style="display: flex; flex-wrap: wrap;">
               <ion-label>{{ note.text }}</ion-label>
             </ion-item>

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  notesList: Note[];
+  notesList: any;
 
   constructor(
     private modal: ModalController,
@@ -61,6 +61,10 @@ export class HomePage implements OnInit {
       });
       alert.present();
     });
+  }
+
+  createColor() {
+    const color = '';
   }
   // List TODO
 
