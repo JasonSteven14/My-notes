@@ -1,3 +1,5 @@
+$bkgrd:#f1eded61;
+
 ion-content{
     --background: #fff url('../../assets/images/leaf.jpg') no-repeat center center / cover
 }
@@ -13,4 +15,8 @@ ion-content{
     font-size: 18px;
     padding-top: 5px;
     color: white;
+}
+
+#inpts{
+    background: $bkgrd;
 }
