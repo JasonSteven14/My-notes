@@ -18,22 +18,49 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="form-group" size="12" size-md="8" offset-md="2"  id="loginFormulary">
+      <ion-col size="12" size-md="8" offset-md="2" >
         <ion-buttons style="padding-bottom:20px;padding-top: 20px">
-          <ion-button fill="solid" color="primary">Sign in</ion-button>
-          <ion-button fill="solid" color="light">Sign up</ion-button>
+          <ion-button id="btnLog" fill="solid" color="primary" (click)="changeToLog()">Log in</ion-button>
+          <ion-button id="btnSign" fill="solid" color="light" (click)="changeToSign()">Sign up</ion-button>
         </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <ion-row id="rowLog" style="display: flex;">
+      <ion-col class="form-group" size="12" size-md="8" offset-md="2" id="loginFormulary">
         <ion-label color="light" position="floating">
-          Username
+          Email
         </ion-label>
-        <ion-input  class="UserInputLogIn" id="inpts"></ion-input>
+        <ion-input class="UserInputLogIn" id="inpts"></ion-input>
         <ion-label color="light" position="floating">
           Password
         </ion-label>
-        <ion-input id="inpts"></ion-input>  
-          <ion-button style="padding-top: 20px; height: 65px;" type="submit"  fill="solid" expand="block" color="primary">
-            LOGIN
-          </ion-button>
+        <ion-input id="inpts"></ion-input>
+        <ion-button style="padding-top: 20px; height: 65px;" type="submit" fill="solid" expand="block" color="primary">
+          LOGIN
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row id="rowSign" style="display: none">
+      <ion-col class="form-group" size="12" size-md="8" offset-md="2" id="loginFormulary">
+        <ion-label color="light" position="floating">
+          First name
+        </ion-label>
+        <ion-input class="UserInputLogIn" id="inpts"></ion-input>
+        <ion-label color="light" position="floating">
+          Last name
+        </ion-label>
+        <ion-input id="inpts"></ion-input>
+        <ion-label color="light" position="floating">
+          Email
+        </ion-label>
+        <ion-input id="inpts"></ion-input>
+        <ion-label color="light" position="floating">
+          Password
+        </ion-label>
+        <ion-input id="inpts"></ion-input>
+        <ion-button style="padding-top: 20px; height: 65px;" type="submit" fill="solid" expand="block" color="primary">
+          SIGN UP
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
