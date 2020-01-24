@@ -34,6 +34,14 @@
 
     <ion-row *ngIf="isLoginView" style="display: flex;">
       <ion-col size="12" size-md="8" offset-md="2">
+        <form [formGroup]="loginForm">
+          <ion-item>
+            <ion-label position="floating">
+              Search address
+            </ion-label>
+            <ion-input formControlName="addressSearch"></ion-input>
+          </ion-item>
+        </form>
         <ion-item>
           <ion-label position="floating">
             Email
@@ -99,4 +107,16 @@
 
 
   </ion-grid>
+
+
+  <div class="ion-padding-start" style="background-color: white">
+    Search term:
+    <div>
+      {{ loginForm?.get('addressSearch')?.value }}
+    </div>
+    Addresses:
+    <div *ngFor="let address of addressSearchObservable | async">
+      {{ address.street }}
+    </div>
+  </div>
 </ion-content>
