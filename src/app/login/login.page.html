@@ -34,23 +34,24 @@
 
     <ion-row *ngIf="isLoginView" style="display: flex;">
       <ion-col size="12" size-md="8" offset-md="2">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="logInForm">
           <ion-item>
             <ion-label position="floating">
               Email
             </ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="emailLogInput"></ion-input>
+            <span *ngIf="formErrors.emailLogInput" style="background: black; color: white;">{{formErrors.emailLogInput}} heLLo world</span>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">
               Password
             </ion-label>
-            <ion-input></ion-input>
+            <ion-input type="Password" formControlName="passwordLogInput"></ion-input>
           </ion-item>
 
-          <ion-button style="padding-top: 20px; height: 65px;" type="submit" fill="solid" expand="block"
-            color="primary">
+          <ion-button [disabled]="logInForm.invalid" (click)="onSubmitLoginButton()"
+            style="padding-top: 20px; height: 65px;" type="submit" fill="solid" expand="block" color="primary">
             LOGIN
           </ion-button>
         </form>
@@ -61,44 +62,44 @@
 
     <ion-row *ngIf="!isLoginView">
       <ion-col size="12" size-md="8" offset-md="2">
-        <form>
+        <form [formGroup]="signUpForm">
           <ion-item>
             <ion-label position="floating">
               First name
             </ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="Firstname"></ion-input>
+            <span>{{formErrors.Firstname}}</span>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">
               Last name
             </ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="Lastname"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">
               Email
             </ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="Email"></ion-input>
           </ion-item>
+          <span></span>
 
           <ion-item>
             <ion-label position="floating">
               Password
             </ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="Password"></ion-input>
           </ion-item>
 
-          <ion-button style="padding-top: 20px; height: 65px;" type="submit" fill="solid" expand="block"
-            color="primary">
+          <ion-button [disabled]="signUpForm.invalid" (click)="onSubmitSignupButton()"
+            style="padding-top: 20px; height: 65px;" type="submit" fill="solid" expand="block" color="primary">
             SIGN UP
           </ion-button>
         </form>
-
       </ion-col>
     </ion-row>
-
 
   </ion-grid>
 </ion-content>
