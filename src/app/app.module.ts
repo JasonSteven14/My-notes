@@ -14,13 +14,12 @@ import { IonicStorageModule } from '@ionic/storage';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { baseURL } from './shared/urldbs';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { NoteDetailSettingsComponent } from './note-detail-settings/note-detail-settings.component';
-import { from } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent, AddNoteComponent, NoteDetailSettingsComponent],
@@ -37,10 +36,10 @@ import { from } from 'rxjs';
     HttpClientModule
   ],
   providers: [
+    AngularFirestore,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {provide: 'BaseURL', useValue: baseURL}
   ],
   bootstrap: [AppComponent]
 })
