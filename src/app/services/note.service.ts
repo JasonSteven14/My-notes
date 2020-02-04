@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { NOTES } from '../shared/data';
 import { of, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { delay, debounceTime, filter, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { Note } from '../shared/note';
 
@@ -13,6 +14,7 @@ export class NoteService {
 
   constructor(
     private http: HttpClient,
+    private angularFireStore: AngularFirestore
   ) { }
 
   getNotes() {

@@ -1,23 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-
+import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService implements OnInit {
-  // user = {
-  //   email: 'test@hotmail.com',
-  //   pass: '132345fsfjs'
-  // };
+export class StorageService {
 
-  constructor(private fbAuth: AngularFireAuth
-  ) {
-   }
-
-  ngOnInit() {
+  constructor() {
   }
 
-  async getUser(email, pass ) {
-   await this.fbAuth.auth.createUserWithEmailAndPassword(email, pass);
-  }
 }
