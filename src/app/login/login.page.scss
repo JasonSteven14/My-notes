@@ -1,19 +1,24 @@
 $background-gray: #f1eded61;
 
 ion-content {
-    --background: #fff url('../../assets/images/leaf.jpg') no-repeat center center / cover;
+  --background: #fff url("../../assets/images/leaf.jpg") no-repeat center center /
+    cover;
 }
 
 .welcome {
-      text-align: center;
-      font-size: 51px;
-      padding-top: 30px;
-      color: white;
+  text-align: center;
+  font-size: 51px;
+  padding-top: 30px;
+  color: white;
 }
 
 .greeting {
-    text-align: center;
-    font-size: 18px;
-    padding-top: 5px;
-    color: white;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 5px;
+  color: white;
+}
+
+.input-error {
+  color: red;
 }

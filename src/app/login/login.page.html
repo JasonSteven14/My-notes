@@ -39,15 +39,23 @@
             <ion-label position="floating">
               Email
             </ion-label>
-            <ion-input formControlName="emailLogInput"></ion-input>
-            <span *ngIf="formErrors.emailLogInput" style="background: black; color: white;">{{formErrors.emailLogInput}} heLLo world</span>
+            <ion-input (ionBlur)="onLoginEmailBlur()" (ionChange)="onLoginEmailChange()" formControlName="email"></ion-input>
+            <!-- <span *ngIf="formErrors.emailLogInput" style="background: black; color: white;">{{formErrors.emailLogInput}} heLLo world</span> -->
+            <div *ngIf="showLoginEmailErrors">
+              <span class="input-error"
+                *ngIf="logInForm.get('email').errors?.required">{{validationMessages.email.required}}</span>
+              <span class="input-error"
+                *ngIf="logInForm.get('email').errors?.email">{{validationMessages.email.pattern}}</span>
+              <span class="input-error"
+                *ngIf="logInForm.get('email').errors?.maxlength">{{validationMessages.email.maxlength}}</span>
+            </div>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">
               Password
             </ion-label>
-            <ion-input type="Password" formControlName="passwordLogInput"></ion-input>
+            <ion-input type="Password" formControlName="password"></ion-input>
           </ion-item>
 
           <ion-button [disabled]="logInForm.invalid" (click)="onSubmitLoginButton()"

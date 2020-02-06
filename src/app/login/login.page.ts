@@ -13,6 +13,7 @@ export class LoginPage {
   errorMessage = '';
   logInForm: FormGroup;
   signUpForm: FormGroup;
+  showLoginEmailErrors = false;
 
   formErrors = {
     Firstname: '',
@@ -24,34 +25,23 @@ export class LoginPage {
   };
 
   validationMessages = {
-    Firstname: {
+    firstname: {
       required: 'First Name is required.',
       minlength: 'First Name must be at least 2 characters long.',
       maxlength: 'First Name cannot be more than 25 characters long.'
     },
-    Lastname: {
+    lastname: {
       required: 'Last Name is required.',
       minlength: 'Last Name must be at least 2 characters long.',
       maxlength: 'Last Name cannot be more than 25 characters long.'
     },
-    Email: {
+    email: {
       required: 'Email is required.',
       pattern: 'Email not in valid format.',
-      minlength: 'Last Name must be at least 2 characters long.',
-      maxlength: 'Last Name cannot be more than 25 characters long.'
+      minlength: 'Email must be at least 2 characters long.',
+      maxlength: 'Email cannot be more than 25 characters long.'
     },
-    Password: {
-      required: 'Password required',
-      minlength: 'Password must be at least 2 characters long.',
-      maxlength: 'Password cannot be more than 25 characters long.'
-    },
-    emailLogInput: {
-      required: 'Password required',
-      pattern: 'Email not in valid format.',
-      minlength: 'Last Name must be at least 2 characters long.',
-      maxlength: 'Last Name cannot be more than 25 characters long.'
-    },
-    passwordLogInput: {
+    password: {
       required: 'Password required',
       minlength: 'Password must be at least 2 characters long.',
       maxlength: 'Password cannot be more than 25 characters long.'
@@ -66,28 +56,26 @@ export class LoginPage {
 
   createForm() {
     this.logInForm = new FormGroup({
-      emailLogInput: new FormControl('', [Validators.required, Validators.email, Validators.min(2), Validators.max(15)]),
-      passwordLogInput: new FormControl('', [Validators.required, Validators.min(2), Validators.max(15)])
+      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(15)]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(15)])
     });
 
     this.signUpForm = new FormGroup({
-      Firstname: new FormControl('', [Validators.required, Validators.min(2), Validators.max(15)]),
-      Lastname: new FormControl('', [Validators.required, Validators.min(2), Validators.max(15)]),
-      Email: new FormControl('', [Validators.required, Validators.email, Validators.min(2), Validators.max(15)]),
-      Password: new FormControl('', [Validators.required, Validators.min(2), Validators.max(15)])
+      Firstname: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      Lastname: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      Email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(15)]),
+      Password: new FormControl('', [Validators.required, Validators.maxLength(15)])
     });
-    this.logInForm.valueChanges.subscribe(data => this.onValueChanges(data));
-    this.signUpForm.valueChanges.subscribe(data => this.onValueChanges(data));
   }
 
-  onValueChanges(data?: any) {
-    if (!data) { return; }
-    console.log('this is data 1: ', data);
-    const control = this.logInForm.value.emailLogInput;
-    // tslint:disable-next-line: forin
-    this.formErrors.emailLogInput = this.validationMessages.emailLogInput.required;
-    console.log(this.formErrors);
+  onLoginEmailBlur() {
+    this.showLoginEmailErrors = true;
   }
+
+  onLoginEmailChange() {
+    this.showLoginEmailErrors = false;
+  }
+
 
   setViewLogin() {
     this.isLoginView = true;
