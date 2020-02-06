@@ -30,33 +30,4 @@ export class NoteService {
     NOTES.push(note);
   }
 
-  getAddressSuggestion(streetName: string) {
-    const addressList: { street: string, postalCode: string }[] = [{
-      street: 'Miniaturista Meseguer 21, Benimámet, Valencia, 46035',
-      postalCode: '46035'
-    }, {
-      street: 'Felipe Valls 53, Benimámet, Valencia, 46035',
-      postalCode: '46035'
-    }, {
-      street: 'Martí 16, Valencia, Valencia, 46005',
-      postalCode: '46005'
-    }];
-    const list = addressList.filter(address => address.street.includes(streetName));
-    console.log('Address suggestion: ', list);
-    return of(list);
-    // return throwError('ERROR');
-  }
-
-  getInputSuggestions(valueChanges: Observable<string>, fetchFunction: (query: string) => Observable<any>) {
-    return valueChanges.pipe(
-      debounceTime(250),
-      filter(query => query.length >= 2 || query.length === 0),
-      distinctUntilChanged(),
-      switchMap(value => {
-        return value
-          ? fetchFunction(value).pipe(catchError(_ => of([])))
-          : of([]);
-      })
-    );
-  }
 }
