@@ -4,6 +4,7 @@ import { AddNoteComponent } from '../add-note/add-note.component';
 import { NoteService } from '../services/note.service';
 import { Note } from '../shared/note';
 import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class HomePage implements OnInit {
     private noteService: NoteService,
     private router: Router,
     private loadingController: LoadingController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private storageservice: StorageService
   ) { }
 
   ngOnInit() {
@@ -63,27 +65,23 @@ export class HomePage implements OnInit {
       alert.present();
     });
   }
+  // ////////TODO///////// //
 
-  getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-  }
+  // create a method wich will generate a random color //
 
-  setColor() {
-    let card = document.querySelector('.cardContent');
-  }
+
+  // getRandomColor() {
+  //   const letters = '0123456789ABCDEF';
+  //   let color = '#';
+  //   for (let i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  // }
+
+  // setColor() {
+  //   let card = document.querySelector('.cardContent');
+  // }
 
   // List TODO
-
-  /* 1. create user login page
-
-     2. Create logic to choose between page login or user
-
-     3. when login show the content of each user
-
-  */
 
 }

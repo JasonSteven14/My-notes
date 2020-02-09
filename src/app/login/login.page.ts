@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
-import { IfStmt } from '@angular/compiler';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +49,8 @@ export class LoginPage {
   };
 
   constructor(
-    private authservice: AuthenticationService
+    private authservice: AuthenticationService,
+    private storageservice: StorageService
   ) {
     this.createForm();
   }
