@@ -39,9 +39,9 @@
             <ion-label position="floating">
               Email
             </ion-label>
-            <ion-input (ionBlur)="onLoginEmailBlur()" (ionChange)="onLoginEmailChange()" formControlName="email"></ion-input>
-            <!-- <span *ngIf="formErrors.emailLogInput" style="background: black; color: white;">{{formErrors.emailLogInput}} heLLo world</span> -->
-            <div *ngIf="showLoginEmailErrors">
+            <ion-input (ionBlur)="onLoginBlur()" (ionFocus)="onLoginChange()" formControlName="email">
+            </ion-input>
+            <div *ngIf="showLoginErrors">
               <span class="input-error"
                 *ngIf="logInForm.get('email').errors?.required">{{validationMessages.email.required}}</span>
               <span class="input-error"
@@ -55,7 +55,13 @@
             <ion-label position="floating">
               Password
             </ion-label>
-            <ion-input type="Password" formControlName="password"></ion-input>
+            <ion-input (ionBlur)="onLoginBlur()" (ionFocus)="onLoginChange()" type="Password" formControlName="password"></ion-input>
+            <div *ngIf="showLoginErrors">
+              <span class="input-error"
+                *ngIf="logInForm.get('password').errors?.required">{{validationMessages.password.required}}</span>
+              <span class="input-error"
+                *ngIf="logInForm.get('password').errors?.maxlength">{{validationMessages.password.maxlength}}</span>
+            </div>
           </ion-item>
 
           <ion-button [disabled]="logInForm.invalid" (click)="onSubmitLoginButton()"

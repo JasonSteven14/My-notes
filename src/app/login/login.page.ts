@@ -14,6 +14,7 @@ export class LoginPage {
   logInForm: FormGroup;
   signUpForm: FormGroup;
   showLoginEmailErrors = false;
+  showLoginPasswordErrors = false;
 
   formErrors = {
     Firstname: '',
@@ -69,11 +70,11 @@ export class LoginPage {
     });
   }
 
-  onLoginEmailBlur() {
-    this.showLoginEmailErrors = true;
+  onLoginBlur() {
+    this.showLoginEmailErrors = true ? this.showLoginEmailErrors = false : this.showLoginEmailErrors = true;
   }
 
-  onLoginEmailChange() {
+  onLoginChange() {
     this.showLoginEmailErrors = false;
   }
 
