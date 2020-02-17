@@ -58,15 +58,15 @@ export class LoginPage {
 
   createForm() {
     this.logInForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(15)]),
-      password: new FormControl('', [Validators.required, Validators.maxLength(15)])
+      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(35)]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(35)])
     });
 
     this.signUpForm = new FormGroup({
-      Firstname: new FormControl('', [Validators.required, Validators.maxLength(15)]),
-      Lastname: new FormControl('', [Validators.required, Validators.maxLength(15)]),
-      Email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(15)]),
-      Password: new FormControl('', [Validators.required, Validators.maxLength(15)])
+      Firstname: new FormControl('', [Validators.required, Validators.maxLength(35)]),
+      Lastname: new FormControl('', [Validators.required, Validators.maxLength(35)]),
+      Email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(35)]),
+      Password: new FormControl('', [Validators.required, Validators.maxLength(35)])
     });
   }
 
