@@ -10,7 +10,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size=12 class="welcome">
+      <ion-col size=12 class="wellcome-tag">
         Welcome
       </ion-col>
       <ion-col class="greeting">
@@ -39,9 +39,9 @@
             <ion-label position="floating">
               Email
             </ion-label>
-            <ion-input (ionBlur)="onLoginBlur()" (ionFocus)="onLoginChange()" formControlName="email">
+            <ion-input (ionBlur)="onLoginBlur()" (ionInput)="onLoginChange()" formControlName="email">
             </ion-input>
-            <div *ngIf="showLoginErrors">
+            <div *ngIf="showLoginEmailErrors">
               <span class="input-error"
                 *ngIf="logInForm.get('email').errors?.required">{{validationMessages.email.required}}</span>
               <span class="input-error"
@@ -55,8 +55,8 @@
             <ion-label position="floating">
               Password
             </ion-label>
-            <ion-input (ionBlur)="onLoginBlur()" (ionFocus)="onLoginChange()" type="Password" formControlName="password"></ion-input>
-            <div *ngIf="showLoginErrors">
+            <ion-input (ionBlur)="onLoginBlur()" (ionInput)="onLoginChange()" type="Password" formControlName="password"></ion-input>
+            <div *ngIf="showLoginPasswordErrors">
               <span class="input-error"
                 *ngIf="logInForm.get('password').errors?.required">{{validationMessages.password.required}}</span>
               <span class="input-error"
