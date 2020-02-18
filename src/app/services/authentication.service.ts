@@ -13,19 +13,19 @@ export class AuthenticationService {
   }
 
   isLoged() {
-    this.angularAuthentication.onAuthStateChanged((data) => {
+    this.angularAuthentication.auth.onAuthStateChanged((data) => {
       console.log(data);
     });
   }
 
   async login(email, pass) {
     // this.storageService.loginInAcount(this.logInForm.value)
-    return await this.angularAuthentication.signInWithEmailAndPassword(email, pass).then();
+    return await this.angularAuthentication.auth.signInWithEmailAndPassword(email, pass).then();
   }
 
   async signup(email, pass) {
     try {
-      return this.angularAuthentication.createUserWithEmailAndPassword(email, pass);
+      return this.angularAuthentication.auth.createUserWithEmailAndPassword(email, pass);
     } catch (error) {
       console.log('catch1', error.message);
       throw new Error('INVALID_EMAIL');
