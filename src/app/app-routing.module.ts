@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'note-detail', loadChildren: './note-detail/note-detail.module#NoteDetailPageModule' },
   { path: 'user', loadChildren: () => import('./user/user.module').then( m => m.UserPageModule )},
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },  { path: 'pomodoro-timer', loadChildren: './pomodoro-timer/pomodoro-timer.module#PomodoroTimerPageModule' }
+
 ];
 
 @NgModule({
