@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { NOTES } from '../shared/data';
-import { of, Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { delay, debounceTime, filter, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { Note } from '../shared/note';
+import { File } from '@ionic-native/file/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,12 @@ export class NoteService {
 
   addNote(note: Note) {
     NOTES.push(note);
+  }
+
+  deleteNote(id: string){
+    var arrOfNotes = NOTES.filter(note => note.id !== id);
+    console.log("new array: ", arrOfNotes, path.dirname(process.mainModule.filename));
+    // fs.writeFile()
   }
 
 }

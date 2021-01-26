@@ -6,7 +6,6 @@ import { Note } from '../shared/note';
 import { Router } from '@angular/router';
 import { StorageService } from '../services/storage.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -29,6 +28,7 @@ export class HomePage implements OnInit {
     this.noteService.getNotes().subscribe((notes: Note[]) => {
       this.notesList = notes;
     });
+    console.log("Filename directory: ", process.mainModule.filename)
   }
 
   async openModal() {
